@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Welcome in Rinex Webservice</h2>
+<p>Please login to start using to contribute to our community.</p>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Login">
+</form>
+
+{% endblock %}
