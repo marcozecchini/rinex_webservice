@@ -1,18 +1,55 @@
-version: '3'
+# version: '3'
     
+# services:
+#   db:
+#     image: postgres
+#     environment:
+#       - POSTGRES_DB=postgres
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#   web:
+#     build: .
+#     command: python manage.py runserver 0.0.0.0:8000
+#     env_file: .env
+#     volumes:
+#       - .:/code
+#     ports:
+#       - "8000:8000"
+#     depends_on:
+#       - db
+
+version: '3.6'
+
 services:
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    # command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn rinex_webservice.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
+      - .:/usr/src/
+    expose:
+      - 8000
+    env_file: .env
     depends_on:
       - db
+  db:
+    image: postgres:11.5-alpine
+    restart: always
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    env_file: .env-db
+    ports:
+      - 5432:5432
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:

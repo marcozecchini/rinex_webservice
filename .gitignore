@@ -1,1 +1,4 @@
 .vscode/
+.env
+.env-db
+postgres_data/
