@@ -133,6 +133,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 AUTH_USER_MODEL = 'rinex.CustomUser'
 
