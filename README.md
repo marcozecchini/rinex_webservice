@@ -1,4 +1,4 @@
-# Nome Appealing
+# RHINEX
 
 Qui un immagine carina (possiamo pensare a un logo al volo che richiami il nome)
 
