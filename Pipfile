@@ -10,6 +10,8 @@ dj-database-url = "*"
 psycopg2-binary = "*"
 Django = "==3.0.7"
 gunicorn = "*"
+georinex = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.8"

@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if is_post %}
+
+    {% if is_result %}
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">Longitude</th> 
+                <th scope="col">Date and time</th>
+                <th scope="col">Receiver</th>
+                <th scope="col">Antenna</th>
+                <th scope="col">Systems</th>
+                <th scope="col">Number of systems</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for item in result %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{item.min_lat}} - {{item.max_lat}}</td>
+                    <td>{{ item.min_lon }} - {{item.max_lon}}</td>
+                    <td>{{item.start_time}} -  {{item.finish_time}}</td>
+                    <td>{{item.receiver_info}}</td>
+                    <td>{{item.antenna_info}}</td>
+                    <td>{{item.system_info}}</td>
+                    <td>{{item.number_sys_info}}</td>
+                    <td>
+                        <a href="#">Download</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+
+    <p>{{ result }}</p>
+
+    {% endif %}
+
+
+{% else %}
+<div class="container">
+    <p>Please search the parameters you like.</p>
+    <form action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <!-- {% for item in form.field_name %}
+            {{item.as_p}}
+        {% endfor %} TODO-->
+        <!-- {{ form.non_field_errors }}
+        <label for="{{ form.min_lat.id_for_label }}">{{ form.min_lat.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.min_lat.errors }}
+                <input type="text" class="form-control" id="{{ form.min_lat.id_for_label }}" name="text">
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.min_lon.id_for_label }}">{{ form.min_lon.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.min_lon.errors }}
+                <input type="text" class="form-control" id="{{ form.min_lon.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.max_lat.id_for_label }}">{{ form.max_lat.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.max_lat.errors }}
+                <input type="text" class="form-control" id="{{ form.max_lat.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.max_lon.id_for_label }}">{{ form.max_lon.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.max_lon.errors }}
+                <input type="text" class="form-control" id="{{ form.max_lon.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.receiver_info.id_for_label }}">{{ form.receiver_info.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.receiver_info.errors }}
+                <input type="text" class="form-control" id="{{ form.receiver_info.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.antenna_info.id_for_label }}">{{ form.antenna_info.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.antenna_info.errors }}
+                <input type="text" class="form-control" id="{{ form.antenna_info.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.start_time.id_for_label }}">{{ form.start_time.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.start_time.errors }}
+                <input type="text" class="form-control" id="{{ form.start_time.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.finish_time.id_for_label }}">{{ form.finish_time.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.finish_time.errors }}
+                <input type="text" class="form-control" id="{{ form.finish_time.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.system_info.id_for_label }}">{{ form.system_info.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.system_info.errors }}
+                <input type="text" class="form-control" id="{{ form.system_info.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div>
+        <label for="{{ form.number_sys_info.id_for_label }}">{{ form.number_sys_info.label }}</label>
+        <div class="form-group">
+            <div class="form-label-group">
+                {{ form.number_sys_info.errors }}
+                <input type="text" class="form-control" id="{{ form.number_sys_info.id_for_label }}" name="text" >
+                <span class="helptext"></span>
+            </div>
+        </div> -->
+        {{ form.as_p }}
+        <input type="submit" value="Search">
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

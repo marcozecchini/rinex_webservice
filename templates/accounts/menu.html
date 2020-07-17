@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <h1> Welcome {{user}}</h1>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <p> Do you want to upload a new file? </p>
+                <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <label for="{{ form.file.id_for_label }}">Upload here your RINEX zip file</label>
+                <div class="form-group">
+                    <div class="form-label-group">
+                        {{ form.file.errors }}
+                        <input type="file" class="form-control" id="{{ form.file.id_for_label }}" name="file" required>
+                        <span class="helptext"></span>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" class="btn btn-light">
+            </form>
+        </div>
+        <div class="col">
+            <p>If you want to look for a rinex file according to their metadata ... </p>
+            <button type="button" class="btn btn-light">
+                <a href="{% url 'search' %}" class="badge badge-light">Click here</a>
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

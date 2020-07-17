@@ -132,7 +132,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'menu'
 LOGOUT_REDIRECT_URL = 'home'
 
 AUTH_USER_MODEL = 'rinex.CustomUser'
@@ -140,5 +140,7 @@ AUTH_USER_MODEL = 'rinex.CustomUser'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+STATIC_ROOT = 'static'
 
 STATIC_URL = '/static/'

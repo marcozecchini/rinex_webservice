@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Rinex Webservice</title>
+        <title>Rhinex</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -15,7 +15,7 @@
         </div> -->
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{% url 'home' %}">Rinex Webservice</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Rhinex</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,6 +23,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="{% url 'logout' %}">Log out</a>
                 </li>
@@ -41,9 +44,9 @@
               </form> -->
             </div>
           </nav>
-        <div class="content container">
+        <div class="content container-fluid">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col">
                     <br>
                 {% block content %}
                 {% endblock %}
