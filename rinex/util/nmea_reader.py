@@ -13,6 +13,7 @@ def extract_bbox_from_NMEA(file_path):
 	"""
 	df = pd.read_csv(file_path, header=None, skiprows=4, usecols=[1, 2, 3, 5], names=['type', 'time', 'lat', 'lon'])
 	df_filtered = df[df.type.str.contains('GGA')]  # takes only $GGA entries
+	df_filtered = df_filtered.dropna()
 
 	min_lat = min(df_filtered.lat)
 	max_lat = max(df_filtered.lat)

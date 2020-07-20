@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.db.models import Q
 
+import mimetypes
 from rinex.models import RinexMetadata
 from zipfile import ZipFile 
 
@@ -39,7 +40,8 @@ def menu(request):
                         dual_frequency=metadata['dual_frequency'],
                         file_rinex=file.name)
             
-            with open("uploads/"+file.name, "wb+") as zp:
+            rinex_meta.save()
+            with open("uploads/"+str(rinex_meta.id)+"-"+rinex_meta.file_rinex, "wb+") as zp:
                 for chunk in file.chunks(): #This line let you read the UploadFile
                     zp.write(chunk)
 
@@ -109,6 +111,21 @@ def search(request):
     else: 
         form = SearchFileForm()
         return render(request, 'accounts/search.html', {'form' : form, 'is_post': False})
+
+@login_required
+def download_file(request, id):
+    try:
+        file_rinex = RinexMetadata.objects.get(id=id).file_rinex
+        # fill these variables with real values
+        fl_path = 'uploads/'
+        filename = str(id)+'-'+file_rinex
+        fl = open(fl_path+filename, "rb")
+        mime_type, _ = mimetypes.guess_type(fl_path+filename)
+        response = HttpResponse(fl, content_type=mime_type)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+    except FileNotFoundError:
+        print("File related to id {0} not found".format(id))
 
 @login_required
 def uploadRinex(request): 

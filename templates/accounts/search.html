@@ -31,7 +31,7 @@
                     <td>{{item.system_info}}</td>
                     <td>{{item.number_sys_info}}</td>
                     <td>
-                        <a href="#">Download</a>
+                        <a href="{% url 'download' item.id %}">Download</a>
                     </td>
                 </tr>
                 {% endfor %}

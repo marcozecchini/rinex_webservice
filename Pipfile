@@ -12,6 +12,7 @@ Django = "==3.0.7"
 gunicorn = "*"
 georinex = "*"
 pandas = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.8"

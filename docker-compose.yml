@@ -46,6 +46,8 @@ services:
       - 6379:6379
   nginx:
     build: ./nginx
+    volumes: 
+      - ./static:/usr/src/static
     ports:
       - 8000:80
     depends_on:
