@@ -1,6 +1,6 @@
 # RHINEX
 
-Qui un immagine carina (possiamo pensare a un logo al volo che richiami il nome)
+![rhino](static/rhino.jpg)
 
 ### Authors
 
@@ -23,7 +23,7 @@ The goal of this project is to provide a webservice able to store and distribute
 
 ### Features
 
-The webservice run on Heroku, and exploit some Python codes (@Marco spieghi meglio te?)
+The webservice is implemented using [Django](https://www.djangoproject.com/). For an higher level of abstraction and scalability, the different components of the web service are virtualized into Docker containers. A first prototype is available [here](https://intense-caverns-98162.herokuapp.com/), host in Heroku.
 
 - A user can be recognized as an expert user, and can guarantee for the quality of a single observation of the dataset.
 - The metadata structure follows the INSPIRE ISO.
