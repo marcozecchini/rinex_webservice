@@ -4,14 +4,14 @@
 
 ### Authors
 
-| Name | Affiliation |
-|:-:|:-:|
-| Marco Zecchini | Sapienza Università di Roma, Rome, Italy |
-| Tommaso Lanciano | Sapienza Università di Roma, Rome, Italy |
-| Matteo Bohm | Sapienza Università di Roma, Rome, Italy |
-| Timur Obukhov | Sapienza Università di Roma, Rome, Italy |
-| Maria Antonia Brovelli | Politecnico di Milano, Milan, Italy |
-| Augusto Mazzoni | Sapienza Università di Roma, Rome, Italy |
+| Name | Affiliation | E-mail |
+|:-:|:-:|:-:|
+| Marco Zecchini | Sapienza Università di Roma, Rome, Italy | zecchini@diag.uniroma1.it |
+| Tommaso Lanciano | Sapienza Università di Roma, Rome, Italy | lanciano@diag.uniroma1.it |
+| Matteo Bohm | Sapienza Università di Roma, Rome, Italy | bohm@diag.uniroma1.it |
+| Timur Obukhov | Sapienza Università di Roma, Rome, Italy | obukhov@diag.uniroma1.it |
+| Maria Antonia Brovelli | Politecnico di Milano, Milan, Italy | maria.brovelli@polimi.it |
+| Augusto Mazzoni | Sapienza Università di Roma, Rome, Italy | augusto.mazzoni@uniroma1.it |
 
 ### Description
 
