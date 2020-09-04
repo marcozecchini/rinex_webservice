@@ -9,6 +9,7 @@
 | Marco Zecchini | Sapienza Università di Roma, Rome, Italy |
 | Tommaso Lanciano | Sapienza Università di Roma, Rome, Italy |
 | Matteo Bohm | Sapienza Università di Roma, Rome, Italy |
+| Timur Obukhov | Sapienza Università di Roma, Rome, Italy |
 | Maria Antonia Brovelli | Politecnico di Milano, Milan, Italy |
 | Augusto Mazzoni | Sapienza Università di Roma, Rome, Italy |
 
