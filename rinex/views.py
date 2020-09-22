@@ -15,6 +15,12 @@ from .util.utils import handle_uploaded_file
 def index(request):
     return render(request,'accounts/index.html')
 
+def about(request):
+    return render(request,'about.html')
+
+def licenses(request):
+    return render(request, 'licenses.html')
+
 class SignUpView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
