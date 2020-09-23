@@ -33,6 +33,7 @@ def menu(request):
         file = request.FILES['file']
         if form.is_valid():
             metadata = handle_uploaded_file(request.FILES['file'])
+            license_selection = request.POST['licence']
             rinex_meta = RinexMetadata(min_lon=metadata['min_lon'], 
                         min_lat=metadata['min_lat'], 
                         max_lon=metadata['max_lon'], 
@@ -44,8 +45,9 @@ def menu(request):
                         system_info=metadata['system_info'],
                         number_sys_info=metadata['number_sys_info'],
                         dual_frequency=metadata['dual_frequency'],
-                        file_rinex=file.name)
-            
+                        file_rinex=file.name,
+                        licence=license_selection)
+            print(license_selection)
             rinex_meta.save()
             with open("uploads/"+str(rinex_meta.id)+"-"+rinex_meta.file_rinex, "wb+") as zp:
                 for chunk in file.chunks(): #This line let you read the UploadFile

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser, RinexMetadata
+from .models import CustomUser, RinexMetadata, license_list
 
 class CustomUserCreationForm(UserCreationForm):
 
@@ -16,6 +16,12 @@ class CustomUserChangeForm(UserChangeForm):
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()
+    # licence = forms.MultipleChoiceField(
+    #     required=True,
+    #     widget=forms.SelectMultiple,
+    #     choices=license_list,
+    #     label="licence"
+    # )
 
 class SearchFileForm(forms.Form):
     min_lon = forms.FloatField(required=False, label="Minimum longitude")
