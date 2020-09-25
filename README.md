@@ -1,4 +1,4 @@
-# RHINEX
+# Rhinder
 
 ![rhino](static/rhino.jpg)
 
