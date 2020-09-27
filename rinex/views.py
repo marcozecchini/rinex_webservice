@@ -31,6 +31,7 @@ def menu(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         file = request.FILES['file']
+        print("HERE")
         if form.is_valid():
             metadata = handle_uploaded_file(request.FILES['file'])
             license_selection = request.POST['licence']
@@ -55,6 +56,11 @@ def menu(request):
 
             rinex_meta.save()
             return HttpResponseRedirect('/menu')
+        else:
+            
+            print("ERROR", form.__dict__)
+            return render(request,'accounts/menu.html', {'form': form }) 
+
     else:
         form = UploadFileForm()
     return render(request,'accounts/menu.html', {'form': form }) 
@@ -134,6 +140,10 @@ def download_file(request, id):
         return response
     except FileNotFoundError:
         print("File related to id {0} not found".format(id))
+        return render(request, "404.html")
+    except ValueError:
+        print("File related to id {0} not found".format(id))
+        return render(request, "404.html")
 
 @login_required
 def uploadRinex(request): 

@@ -16,13 +16,11 @@ class CustomUserChangeForm(UserChangeForm):
 
 class UploadFileForm(forms.Form):
     file = forms.FileField()
-    # licence = forms.MultipleChoiceField(
-    #     required=True,
-    #     widget=forms.SelectMultiple,
-    #     choices=license_list,
-    #     label="licence"
-    # )
-
+    licence = forms.MultipleChoiceField(
+       # widget=forms.SelectMultiple,
+        choices=license_list,
+    )
+    
 class SearchFileForm(forms.Form):
     min_lon = forms.FloatField(required=False, label="Minimum longitude")
     min_lat = forms.FloatField(required=False, label="Minimum latitude")

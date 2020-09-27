@@ -4,17 +4,15 @@ from django.contrib.auth.models import AbstractUser
 from enum import Enum
 from django.utils.translation import ugettext_lazy as _
 
-
-class TypeOfLicense(Enum):
-    CC_BY_IGO = "Creative Commons Attribution for Intergovernmental Organisations (CC BY-IGO)"
-    CC_BY = "Creative Commons Attribution International	(CC BY)"
-    CC_BY_SA = "Creative Commons Attribution-Share Alike (CC BY-SA)"
-    CC0 = "Public Domain - No restrictions (CC0)"
-    ODC_ODbL = "Open Database License (ODC-ODbL)"
-    ODC_BY = "Open Data Commons Attribution License (ODC-BY)"
-    PDDL = "Open Data Commons Public Domain Dedication and License (PDDL)"
-
-license_list = [(tag, tag.value) for tag in TypeOfLicense]
+license_list = (
+    ("CC_BY_IGO" , "CC BY-IGO"),
+    ("CC_BY" , "CC BY"),
+    ("CC_BY_SA", "CC BY-SA"),
+    ("CC0", "CC0"), 
+    ("ODC_ODbL" , "ODC-ODbL"),
+    ("ODC_BY" , "ODC-BY"),
+    ("PDDL" , "PDDL"),
+)
 
 class SystemInfo(models.Field):
     def __init__(self, SYS, number, dual):
@@ -47,7 +45,7 @@ class RinexMetadata(models.Model):
     file_rinex = models.CharField(max_length=150)
     upload_datetime = models.DateTimeField(auto_now_add=True) 
 
-    licence = models.CharField(max_length=300, choices=license_list, default=license_list[3])
+    licence = models.CharField(max_length=300, default=license_list[3][0])
 
     def __str__(self):
         return str(self.start_time)+"-"+str(self.finish_time)
